@@ -1,0 +1,10 @@
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\TmpTesting.exe.config
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\TmpTesting.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\TmpTesting.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\obj\Release\TmpTesting.csprojResolveAssemblyReference.cache
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\obj\Release\TmpTesting.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\obj\Release\TmpTesting.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\System.Collections.Immutable.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\TmpTesting\bin\Release\System.Collections.Immutable.xml

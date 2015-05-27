@@ -1,0 +1,4 @@
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\bin\x64\Release\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\bin\x64\Release\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\x64\Release\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\x64\Release\PersistentCollection.pdb

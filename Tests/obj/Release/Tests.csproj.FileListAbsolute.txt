@@ -1,0 +1,7 @@
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\bin\Release\Tests.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\bin\Release\Tests.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\bin\Release\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\bin\Release\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\obj\Release\Tests.csprojResolveAssemblyReference.cache
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\obj\Release\Tests.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\obj\Release\Tests.pdb

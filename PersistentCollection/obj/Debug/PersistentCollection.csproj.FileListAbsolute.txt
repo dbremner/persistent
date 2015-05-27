@@ -1,0 +1,5 @@
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\bin\Debug\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\bin\Debug\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\Debug\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\Debug\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\Debug\PersistentCollection.csprojResolveAssemblyReference.cache

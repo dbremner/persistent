@@ -1,5 +1,4 @@
 ﻿using PersistentCollections.Interfaces;
-using PersistentCollections.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;

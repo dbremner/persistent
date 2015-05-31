@@ -711,11 +711,13 @@ namespace PersistentCollections.PersistentDictionary
             {
                 if (values != null)
                 {
-                    foreach (var value in values) hash ^= value.Key.GetHashCode();
+                    foreach (var value in values)
+                        hash ^= value.Key.GetHashCode() ^ value.Value.GetHashCode();
                 }
                 if (collisions != null)
                 {
-                    foreach (var value in collisions.SelectMany(x => x)) hash ^= value.Key.GetHashCode();
+                    foreach (var value in collisions.SelectMany(x => x)) 
+                        hash ^= value.Key.GetHashCode() ^ value.Value.GetHashCode();
                 }
                 if (references != null)
                 {

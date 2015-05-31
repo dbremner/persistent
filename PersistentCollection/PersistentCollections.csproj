@@ -45,6 +45,7 @@
     <Compile Include="PersistentQueue\PersistentQueue.cs" />
     <Compile Include="PersistentStack\PersistentStack.cs" />
     <Compile Include="PersistentVList\APersistentVList.cs" />
+    <Compile Include="PersistentVList\Block.cs" />
     <Compile Include="PersistentVList\PersistentVList.cs" />
     <Compile Include="PersistentDictionary\MapNode.cs" />
     <Compile Include="PersistentDictionary\TransientDictionary.cs" />
@@ -61,7 +62,6 @@
     <Compile Include="PersistentDictionary\CollisionArray.cs" />
     <Compile Include="PersistentDictionary\PersistentDictionary.cs" />
     <Compile Include="PersistentList\PersistentVector.cs" />
-    <Compile Include="PersistentVList\RandomAccessList.cs" />
     <Compile Include="VersionID.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -71,11 +71,13 @@
     <Compile Include="ExAssert.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="PersistentListTests.cs" />
+    <Compile Include="PersistentStackTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ExtensionsTests.cs" />
     <Compile Include="PersistentDictionaryTests.cs" />
     <Compile Include="PersistentHashSetTest.cs" />
     <Compile Include="PersistentVListTests.cs" />
+    <Compile Include="PersistentQueueTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PersistentCollection\PersistentCollections.csproj">

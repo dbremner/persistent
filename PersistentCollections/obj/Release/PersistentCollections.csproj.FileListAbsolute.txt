@@ -5,6 +5,5 @@ D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\
 D:\BAKALARKA\PersistentCollection\PersistentCollection\PersistentCollection\obj\Release\PersistentCollection.pdb
 D:\BAKALARKA\PersistentCollection\PersistentCollections\PersistentCollections\bin\Release\PersistentCollections.dll
 D:\BAKALARKA\PersistentCollection\PersistentCollections\PersistentCollections\bin\Release\PersistentCollections.pdb
-D:\BAKALARKA\PersistentCollection\PersistentCollections\PersistentCollections\obj\Release\PersistentCollections.csprojResolveAssemblyReference.cache
 D:\BAKALARKA\PersistentCollection\PersistentCollections\PersistentCollections\obj\Release\PersistentCollections.dll
 D:\BAKALARKA\PersistentCollection\PersistentCollections\PersistentCollections\obj\Release\PersistentCollections.pdb

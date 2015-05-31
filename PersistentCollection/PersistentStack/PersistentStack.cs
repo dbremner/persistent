@@ -34,6 +34,8 @@ namespace PersistentCollections
 
         public PersistentStack<T> Pop()
         {
+            if (next == null) throw new InvalidOperationException("Collection cannot be empty");
+
             return next;
         }
 

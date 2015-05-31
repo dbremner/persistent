@@ -346,5 +346,82 @@ namespace Tests
             MyAssert.ArrayEquals(v4, new[] { 9, 5, 8, 30 });
         }
 
+
+        [TestMethod]
+        public void EqualityTest()
+        {
+            var v0 = PersistentVList<int>.Empty;
+
+            var v1 = v0.Add(5, 4, 3);
+            var v2 = v0.Add(5).Add(4);
+            var v3 = v2.Add(3);
+            var v4 = v1.RemoveLast();
+            var v5 = v3.RemoveLast();
+            var v6 = v4.RemoveLast(2);
+            var v7 = v5.RemoveLast(2);
+
+            Assert.AreNotEqual(v1, v2);
+            Assert.IsTrue(v1 != v2);
+            Assert.AreEqual(v1, v3);
+            Assert.IsTrue(v1 == v3);
+            Assert.AreEqual(v4, v5);
+            Assert.AreEqual(v6, v7);
+            Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
+            Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
+            Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+        }
+
+        [TestMethod]
+        public void BiggerEqualityTest()
+        {
+            Parallel.For(0, 100, l =>
+            {
+                var r = new Random(5544 * l);
+                var randomArray = r.RandomArray(int.MaxValue, r.Next(1000000));
+
+                var v0 = randomArray.ToPersistentVList();
+                var v1 = randomArray.ToPersistentVList();
+
+                Assert.AreEqual(v0, v1);
+                Assert.AreEqual(v0.GetHashCode(), v1.GetHashCode());
+
+                var v7 = v0.RemoveLast(5);
+                var v8 = v0.RemoveLast(5);
+                Assert.AreEqual(v7, v8);
+                Assert.AreEqual(v7.GetHashCode(), v8.GetHashCode());
+
+                var vals = r.RandomArray(int.MaxValue, v0.Count);
+
+                var v2 = v0;
+
+                for (int i = 0; i < vals.Length; i++)
+                {
+                    v0 = v0.Add(vals[i]);
+                    v1 = v1.Add(vals[i]);
+                    v2 = v2.Add(vals[i]);
+                }
+
+                Assert.AreEqual(v0, v1);
+                Assert.AreEqual(v0, v2);
+                Assert.IsTrue(v0 == v1);
+                Assert.IsTrue(v0 == v2);
+                Assert.AreEqual(v0.GetHashCode(), v1.GetHashCode());
+                Assert.AreEqual(v0.GetHashCode(), v2.GetHashCode());
+
+                var v5 = v0.Add(2);
+                var v6 = v2.RemoveLast();
+                Assert.AreNotEqual(v5, v1);
+                Assert.AreNotEqual(v1, v6);
+                Assert.IsTrue(v5 != v1);
+                Assert.IsTrue(v6 != v1);
+                Assert.AreNotEqual(v5.GetHashCode(), v1.GetHashCode());
+                Assert.AreNotEqual(v1.GetHashCode(), v6.GetHashCode());
+
+                v0 = v0.Add(Enumerable.Range(0, 1024));
+                v2 = v2.RemoveLast(r.Next(v0.Count >> 1));
+                Assert.AreNotEqual(v0.GetHashCode(), v1.GetHashCode());
+                Assert.AreNotEqual(v1.GetHashCode(), v2.GetHashCode());
+            });
+        }
     }
 }

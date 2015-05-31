@@ -31,12 +31,16 @@ namespace PersistentCollections
                 return new ReversePVList<T>(block, offset + 1);
             }
 
-            return new ReversePVList<T>(block.Next, 0);
+            return (block.Next != null)
+                ? new ReversePVList<T>(block.Next, 0)
+                : null;
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return block.Enumerate(offset);
+            return (block != null)
+                ? block.Enumerate(offset)
+                : Enumerable.Empty<T>().GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
@@ -101,6 +105,7 @@ namespace PersistentCollections
     {
         private PersistentVList<T> stack;
         private ReversePVList<T> reverseStack;
+        private int hash;
 
         private static readonly PersistentQueue<T> empty = new PersistentQueue<T>(PersistentVList<T>.Empty,  null);
         public static PersistentQueue<T> Empty { get { return empty; } }
@@ -133,10 +138,8 @@ namespace PersistentCollections
             {
                 if (stack.Count == 0)
                     throw new InvalidOperationException("Collection cannot be empty");
-                else
-                    reverseStack = new ReversePVList<T>(stack);
 
-                return new PersistentQueue<T>(PersistentVList<T>.Empty, reverseStack.Next());
+                return new PersistentQueue<T>(PersistentVList<T>.Empty, new ReversePVList<T>(stack).Next());
             }
 
             return new PersistentQueue<T>(stack, reverseStack.Next());
@@ -161,6 +164,51 @@ namespace PersistentCollections
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
+        }
+
+        public bool Equals(PersistentQueue<T> other)
+        {
+            return Enumerable.SequenceEqual(this, other);
+        }
+
+        public override int GetHashCode()
+        {
+            if (hash == 0)
+            {
+                int i = 1;
+                foreach (var item in this)
+                {
+                    hash ^= item.GetHashCode() * 47 * i++;
+                }
+
+                if (hash == 0) hash = 1;
+            }
+
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var plist = obj as PersistentQueue<T>;
+            if (obj == null) return false;
+
+            return Equals(plist);
+        }
+
+        public static bool operator ==(PersistentQueue<T> a, PersistentQueue<T> b)
+        {
+            if (((object)a == null) == ((object)b == null))
+            {
+                if ((object)a != null) return a.Equals(b);
+            }
+            else return false;
+
+            return true;
+        }
+
+        public static bool operator !=(PersistentQueue<T> a, PersistentQueue<T> b)
+        {
+            return !(a == b);
         }
     }
 }

@@ -98,5 +98,31 @@ namespace Tests
             Assert.IsTrue(v6 != v5);
             Assert.IsTrue(v6 != v1);
         }
+
+
+        [TestMethod]
+        public void EqualityTest()
+        {
+            var v0 = PersistentHashSet<int>.Empty;
+
+            var v1 = v0.Add(5, 5).Add(4, 4).Add(3, 3);
+            var v2 = v0.Add(5, 5).Add(4, 4);
+            var v3 = v2.Add(3, 3);
+            var v4 = v1.Remove(4);
+            var v5 = v3.Remove(4);
+            var v6 = v4.Remove(5).Remove(3);
+            var v7 = v5.Remove(3).Remove(5);
+
+            Assert.AreNotEqual(v1, v2);
+            Assert.IsTrue(v1 != v2);
+            Assert.AreEqual(v1, v3);
+            Assert.IsTrue(v1 == v3);
+            Assert.AreEqual(v4, v5);
+            Assert.AreEqual(v6, v7);
+            Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
+            Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
+            Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+        }
+
     }
 }

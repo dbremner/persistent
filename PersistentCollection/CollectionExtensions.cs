@@ -4,18 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PersistentCollections.Vectors;
 
 
 namespace System.Linq
 {
     public static class CollectionExtensions
     {
-        public static RandomAccessList<T> ToImmutable<T>(this LinkedList<T> list)
-        {
-            return RandomAccessList<T>.Create(list);
-        }
-
         public static PersistentList<T> ToPersistentList<T>(this IEnumerable<T> e)
         {
             var list = PersistentList<T>.Empty;

@@ -1,10 +1,10 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using PersistentCollection;
+using PersistentCollections;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Collections.Generic;
-using PersistentCollection.PersistentVList;
+using PersistentCollections.PersistentVList;
 
 namespace Tests
 {

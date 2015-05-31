@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     internal static class Extensions
     {

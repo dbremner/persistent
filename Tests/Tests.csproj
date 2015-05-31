@@ -78,9 +78,9 @@
     <Compile Include="PersistentVListTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PersistentCollection\PersistentCollection.csproj">
+    <ProjectReference Include="..\PersistentCollection\PersistentCollections.csproj">
       <Project>{32d414ab-4bca-44e0-9b30-dd335e5ab617}</Project>
-      <Name>PersistentCollection</Name>
+      <Name>PersistentCollections</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

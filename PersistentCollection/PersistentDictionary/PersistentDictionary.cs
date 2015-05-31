@@ -1,12 +1,12 @@
-﻿using PersistentCollection.Interfaces;
-using PersistentCollection.PersistentDictionary;
-using PersistentCollection.Vectors;
+﻿using PersistentCollections.Interfaces;
+using PersistentCollections.PersistentDictionary;
+using PersistentCollections.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     public class PersistentDictionary<K, V> : APersistentDictionary<K, V>, IEnumerable<KeyValuePair<K, V>>, IEquatable<PersistentDictionary<K, V>>
     {

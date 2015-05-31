@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using PersistentCollection;
+using PersistentCollections;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Tests;
-namespace PersistentCollection.Tests
+namespace PersistentCollections.Tests
 {
     [TestClass()]
     public class PersistentDictionaryTests

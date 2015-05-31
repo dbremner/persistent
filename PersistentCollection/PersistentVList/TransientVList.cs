@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection.PersistentVList
+namespace PersistentCollections.PersistentVList
 {
 
     public sealed class TransientVList<T> : APersistentVList<T>, IEnumerable<T>
@@ -104,15 +104,21 @@ namespace PersistentCollection.PersistentVList
                 block = new Block<T>(Block<T>.InitialBlockSize, item, versionID);
                 offset = 0;
             }
-            else if (block.IsFull)
-            {
-                block = new Block<T>(block, offset, item, versionID);
-                offset = 0;
-            }
             else
             {
-                block = block.TransientAdd(offset, item, versionID);
-                offset++;
+                lock (block)
+                {
+                    if (block.IsFull)
+                    {
+                        block = new Block<T>(block, offset, item, versionID);
+                        offset = 0;
+                    }
+                    else
+                    {
+                        block = block.TransientAdd(offset, item, versionID);
+                        offset++;
+                    }
+                }
             }
         }
 

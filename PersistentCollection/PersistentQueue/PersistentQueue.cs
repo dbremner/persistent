@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     internal class ReversePVList<T> : IEnumerable<T>
     {
@@ -114,6 +114,17 @@ namespace PersistentCollection
         public PersistentQueue<T> Enqueue(T item)
         {
             return new PersistentQueue<T>(stack.Add(item), reverseStack);
+        }
+
+        public PersistentQueue<T> Enqueue(IEnumerable<T> items)
+        {
+            var newStack = stack;
+            foreach (var item in items)
+            {
+                newStack = newStack.Add(item);
+            }
+
+            return new PersistentQueue<T>(newStack, reverseStack);
         }
 
         public PersistentQueue<T> Dequeue()

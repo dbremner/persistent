@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32D414AB-4BCA-44E0-9B30-DD335E5AB617}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{5B3770B5-B4D4-472B-8379-7301D227E135}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PersistentCollection</RootNamespace>
-    <AssemblyName>PersistentCollection</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>Benchmarking</RootNamespace>
+    <AssemblyName>Benchmarking</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,48 +21,56 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionExtensions.cs" />
-    <Compile Include="PersistentDictionary\IMapNode.cs" />
-    <Compile Include="PersistentQueue\PersistentQueue.cs" />
-    <Compile Include="PersistentVList\APersistentVList.cs" />
-    <Compile Include="PersistentVList\PersistentVList.cs" />
-    <Compile Include="PersistentDictionary\MapNode.cs" />
-    <Compile Include="PersistentDictionary\TransientDictionary.cs" />
-    <Compile Include="PersistentHashSet\PersistentHashSet.cs" />
-    <Compile Include="PersistentHashSet\TransientHashSet.cs" />
-    <Compile Include="PersistentList\DataNode.cs" />
-    <Compile Include="PersistentList\ReferencesNode.cs" />
-    <Compile Include="PersistentList\TailNode.cs" />
-    <Compile Include="PersistentVList\TransientVList.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Benchmark.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+    <Compile Include="BenchmarkHashSet.cs" />
+    <Compile Include="BenchmarkStack.cs" />
+    <Compile Include="BenchmarkQueue.cs" />
+    <Compile Include="BenchmarkDictionary.cs" />
+    <Compile Include="BenchmarkList.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="PersistentDictionary\APersistentDictionary.cs" />
-    <Compile Include="PersistentList\APersistentList.cs" />
-    <Compile Include="PersistentDictionary\CollisionArray.cs" />
-    <Compile Include="PersistentDictionary\PersistentDictionary.cs" />
-    <Compile Include="PersistentList\PersistentVector.cs" />
-    <Compile Include="PersistentVList\RandomAccessList.cs" />
-    <Compile Include="VersionID.cs" />
+    <Compile Include="MemoryTest.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersistentCollection\PersistentCollections.csproj">
+      <Project>{32d414ab-4bca-44e0-9b30-dd335e5ab617}</Project>
+      <Name>PersistentCollections</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

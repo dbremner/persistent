@@ -1,12 +1,12 @@
-﻿using PersistentCollection.Interfaces;
-using PersistentCollection.PersistentDictionary;
+﻿using PersistentCollections.Interfaces;
+using PersistentCollections.PersistentDictionary;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     public sealed class TransientDictionary<K, V> : APersistentDictionary<K, V>, IEnumerable<KeyValuePair<K, V>>
     {

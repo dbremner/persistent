@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection.PersistentList
+namespace PersistentCollections.PersistentList
 {
     internal class DataNode<T> : IListNode<T>, IEquatable<DataNode<T>>, IEnumerable<T>
     {

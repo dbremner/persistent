@@ -1,5 +1,5 @@
-﻿using PersistentCollection;
-using PersistentCollection.Vectors;
+﻿using PersistentCollections;
+using PersistentCollections.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -16,8 +16,7 @@ namespace TmpTesting
 
         static void Main(string[] args)
         {
-            var r = new Random(544714);
-            var max = 5000;
+            var max = 5000000;
             var t = Stopwatch.StartNew();
             
             Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.RealTime;
@@ -26,27 +25,25 @@ namespace TmpTesting
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
 
-                var qq = PersistentDictionary<int, int>.Empty;
-                var d = ImmutableDictionary<int, int>.Empty;
-
-                var ra = r.RandomArray(int.MaxValue, max).Distinct();
-                max = ra.Count();
-
+                var qq = PersistentVList<int>.Empty;
+                var d = ImmutableStack<int>.Empty;
+                var v0 = new PersistentVList<int>[max];
+                var v1 = new ImmutableStack<int>[max];
                 t.Restart();
-                foreach (var i in ra)
+                for (int i = 0; i < max; i++)
                 {
-                    qq = qq.Add(i, i);
-
+                    qq = qq.Add(i);
+                    v0[i] = qq;
                     //if (i % 200 == 0) qq = qq.RemoveLast();
                 }
                 Console.WriteLine(t.Elapsed);
                 GC.Collect();
                 GC.WaitForPendingFinalizers();
                 t.Restart();
-                foreach (var i in ra)
+                for (int i = 0; i < max; i++)
                 {
-                    d = d.Add(i, i);
-
+                    d = d.Push(i);
+                    v1[i] = d;
                     //if (i % 200 == 0) qq = qq.RemoveLast();
                 }
                 Console.WriteLine(t.Elapsed);

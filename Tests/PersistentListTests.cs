@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using PersistentCollection;
+using PersistentCollections;
 
 namespace Tests
 {

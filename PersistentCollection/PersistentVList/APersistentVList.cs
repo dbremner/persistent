@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection.PersistentVList
+namespace PersistentCollections.PersistentVList
 {
     public class APersistentVList<T> : IEnumerable<T>
     {

@@ -1,0 +1,10 @@
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\Benchmarking.exe.config
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\Benchmarking.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\Benchmarking.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\PersistentCollection.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\System.Collections.Immutable.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\System.Collections.Immutable.xml
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\obj\Debug\Benchmarking.csprojResolveAssemblyReference.cache
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\obj\Debug\Benchmarking.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\obj\Debug\Benchmarking.pdb

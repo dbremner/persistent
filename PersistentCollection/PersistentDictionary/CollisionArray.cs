@@ -1,12 +1,12 @@
-﻿using PersistentCollection.Interfaces;
-using PersistentCollection.Vectors;
+﻿using PersistentCollections.Interfaces;
+using PersistentCollections.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     /// <summary>
     ///     Simple implementation of collision collection using persistent array

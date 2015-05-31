@@ -1,12 +1,12 @@
-﻿using PersistentCollection.PersistentDictionary;
-using PersistentCollection.Vectors;
+﻿using PersistentCollections.PersistentDictionary;
+using PersistentCollections.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace PersistentCollection.Interfaces
+namespace PersistentCollections.Interfaces
 {
     internal interface IMapNode<K, V> : IEnumerable<KeyValuePair<K, V>>
     {

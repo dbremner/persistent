@@ -1,10 +1,10 @@
-﻿using PersistentCollection.Interfaces;
+﻿using PersistentCollections.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection.PersistentDictionary
+namespace PersistentCollections.PersistentDictionary
 {
     internal class MapNode<K, V> : IMapNode<K, V>, IEnumerable<KeyValuePair<K, V>>, IEquatable<MapNode<K, V>>
     {

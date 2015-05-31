@@ -1,14 +1,14 @@
-﻿using PersistentCollection.PersistentVList;
+﻿using PersistentCollections.PersistentVList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     internal sealed class Block<T>
     {
-        private const int MaxSize = 2048;
+        private const int MaxSize = 1 << 13;
         internal const int InitialBlockSize = 1;
 
         private int lastModified;
@@ -18,7 +18,13 @@ namespace PersistentCollection
         private int restCount;
         private VersionID versionID;
 
-        public bool IsFull { get { return lastModified + 1 == data.Length; } }
+        public bool IsFull 
+        { 
+            get 
+            {
+                return lastModified + 1 == data.Length;
+            } 
+        }
 
         public int Offset { get { return offset; } }
         public Block<T> Next { get { return next; } }
@@ -283,20 +289,24 @@ namespace PersistentCollection
                     block: new Block<T>(Block<T>.InitialBlockSize, item),
                     offset: 0);
             }
-            else if (block.IsFull)
-            {
-                return new PersistentVList<T>(
-                    block: new Block<T>(block, offset, item),
-                    offset: 0);
-            }
-            else if (block.TryAdd(offset, item))
-            {
-                return new PersistentVList<T>(
-                    block: block,
-                    offset: offset + 1);
-            }
             else
             {
+                lock (block)
+                {
+                    if (block.IsFull)
+                    {
+                        return new PersistentVList<T>(
+                            block: new Block<T>(block, offset, item),
+                            offset: 0);
+                    }
+                    else if (block.TryAdd(offset, item))
+                    {
+                        return new PersistentVList<T>(
+                            block: block,
+                            offset: offset + 1);
+                    }
+                }
+
                 return new PersistentVList<T>(
                     block: new Block<T>(block, offset, Block<T>.InitialBlockSize, item),
                     offset: 0);
@@ -335,34 +345,4 @@ namespace PersistentCollection
     }
 
 
-    public class PStack<T>
-    {
-        private T item;
-        private PStack<T> next;
-
-
-        private static readonly PStack<T> empty = new PStack<T>();
-        public static PStack<T> Empty { get { return empty; } }
-
-        public PStack ()
-	    {
-
-	    }
-
-        public PStack(PStack<T> next, T item)
-        {
-            this.next = next;
-            this.item = item;
-        }
-
-        public PStack<T> Push(T item)
-        {
-            return new PStack<T>(this, item);
-        }
-
-        public PStack<T> Pop()
-        {
-            return next;
-        }
-    }
 }

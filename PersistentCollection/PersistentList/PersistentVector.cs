@@ -1,12 +1,12 @@
-﻿using PersistentCollection.Interfaces;
-using PersistentCollection.PersistentList;
+﻿using PersistentCollections.Interfaces;
+using PersistentCollections.PersistentList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 
-namespace PersistentCollection
+namespace PersistentCollections
 {
     public sealed class PersistentList<T> : APersistentList<T>, IEquatable<PersistentList<T>>
     {

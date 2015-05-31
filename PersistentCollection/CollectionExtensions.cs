@@ -1,10 +1,10 @@
-﻿using PersistentCollection.Interfaces;
-using PersistentCollection;
+﻿using PersistentCollections.Interfaces;
+using PersistentCollections;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using PersistentCollection.Vectors;
+using PersistentCollections.Vectors;
 
 
 namespace System.Linq
@@ -22,6 +22,14 @@ namespace System.Linq
 
             return list.Add(e);
         }
+
+        public static PersistentVList<T> ToPersistentVList<T>(this IEnumerable<T> e)
+        {
+            var list = PersistentVList<T>.Empty;
+
+            return list.Add(e);
+        }
+
 
         public static PersistentDictionary<K, V> ToPersistentDictionary<T, K, V>(this IEnumerable<T> e, Func<T, K> key, Func<T, V> val)
         {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-using PersistentCollection.Interfaces;
-using PersistentCollection;
+using PersistentCollections.Interfaces;
+using PersistentCollections;
 
-namespace PersistentCollection.Vectors
+namespace PersistentCollections.Vectors
 {
     public class RandomAccessList<T> : IEnumerable<T>
     {

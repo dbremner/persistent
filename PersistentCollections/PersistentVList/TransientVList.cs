@@ -5,7 +5,6 @@ using System.Text;
 
 namespace PersistentCollections.PersistentVList
 {
-
     public sealed class TransientVList<T> : APersistentVList<T>, IEnumerable<T>
     {
         private VersionID versionID;

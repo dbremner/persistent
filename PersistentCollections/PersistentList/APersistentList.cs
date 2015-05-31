@@ -4,14 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace PersistentCollections.PersistentList
 {
-    internal interface IListNode<T>
-    {
-
-    }
-
     public abstract class APersistentList<T> : IEnumerable<T>
     {
         internal IListNode<T> root;
@@ -260,5 +254,19 @@ namespace PersistentCollections.PersistentList
         {
             return GetEnumerator();
         }
+
+        public override string ToString()
+        {
+            var sb = new StringBuilder(2 + Count * 2);
+            sb.Append("[ ");
+
+            foreach (var item in this)
+                sb.Append(item + " ");
+
+            sb.Append("]");
+            return sb.ToString();
+        }
     }
+
+    internal interface IListNode<T> { }
 }

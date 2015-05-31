@@ -4,18 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace PersistentCollections.PersistentDictionary
 {
-    internal enum NodeState
-    {
-        Nil, Value, Collision, Reference
-    }
-
-    internal enum MapNodeRelation
-    {
-        Equal, Collide, Different
-    }
 
     public abstract class APersistentDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
     {
@@ -241,5 +231,15 @@ namespace PersistentCollections.PersistentDictionary
         {
             return GetEnumerator();
         }
+    }
+
+    internal enum NodeState
+    {
+        Nil, Value, Collision, Reference
+    }
+
+    internal enum MapNodeRelation
+    {
+        Equal, Collide, Different
     }
 }

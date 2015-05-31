@@ -1,106 +1,11 @@
-﻿using System;
+﻿using PersistentCollections.PersistentQueue;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace PersistentCollections
 {
-    internal class ReversePVList<T> : IEnumerable<T>
-    {
-        private RBlock<T> block;
-        private int offset;
-
-        public ReversePVList(RBlock<T> block, int offset)
-        {
-            this.block = block;
-            this.offset = offset;
-        }
-
-        public ReversePVList(PersistentVList<T> vlist)
-        {
-            this.block = vlist.ToReverse();
-            this.offset = 0;
-        }
-
-        public T First { get { return block.Peek(offset); } }
-
-        internal ReversePVList<T> Next()
-        {
-            if (offset + 1 < block.Count)
-            {
-                return new ReversePVList<T>(block, offset + 1);
-            }
-
-            return (block.Next != null)
-                ? new ReversePVList<T>(block.Next, 0)
-                : null;
-        }
-
-        public IEnumerator<T> GetEnumerator()
-        {
-            return (block != null)
-                ? block.Enumerate(offset)
-                : Enumerable.Empty<T>().GetEnumerator();
-        }
-
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-    }
-
-    internal class RBlock<T> 
-    {
-        private T[] data;
-        private RBlock<T> next;
-        private int length = 1;
-
-        public RBlock (T[] data)
-	    {
-            this.data = data;
-	    }
-
-        public RBlock<T> Next { get { return next; } }
-
-        public int Count { get { return length; } }
-
-        public T Peek(int offset)
-        {
-            return data[offset];
-        }
-
-        public void SetNextNode(RBlock<T> next, int lenght)
-        {
-            this.next = next;
-            this.length = lenght;
-        }
-
-        public IEnumerator<T> Enumerate(int offset)
-        {
-            var q = new Queue<RBlock<T>>();
-
-            var n = this;
-            while (n.next != null)
-            {
-                q.Enqueue(n);
-                n = n.next;
-            }
-
-            for (int i = offset; i < length; i++)
-            {
-                yield return data[i];
-            }
-
-            foreach (var block in q)
-            {
-                for (int i = 0; i < block.next.length; i++)
-                {
-                    yield return block.next.data[i];
-                }
-            }
-        }
-    }
-
     public class PersistentQueue<T> : IEnumerable<T>
     {
         private PersistentVList<T> stack;

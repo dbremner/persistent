@@ -1,4 +1,5 @@
-﻿using PersistentCollections.PersistentVList;
+﻿using PersistentCollections.PersistentQueue;
+using PersistentCollections.PersistentVList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,8 +7,6 @@ using System.Text;
 
 namespace PersistentCollections
 {
-    
-
     public sealed class PersistentVList<T> : APersistentVList<T>, IEnumerable<T>, IEquatable<PersistentVList<T>>
     {
         private int hash;

@@ -8,10 +8,10 @@ using System.Text;
 
 namespace PersistentCollections
 {
-    public sealed class PersistentList<T> : APersistentList<T>, IEquatable<PersistentList<T>>
+    public class PersistentList<T> : APersistentList<T>, IEquatable<PersistentList<T>>
     {
         private int hash;
-        private static readonly PersistentList<T> empty = new PersistentList<T>(null, 0, 0, null);
+        protected static readonly PersistentList<T> empty = new PersistentList<T>(null, 0, 0, null);
         public static PersistentList<T> Empty
         {
             get { return empty; }
@@ -20,7 +20,7 @@ namespace PersistentCollections
         public PersistentList(TransientList<T> transient)
             : base(transient)
         {
-            //tailData = ((TailData<T>)transient.tailData).ToPersistentNode();
+
         }
 
         #region Main functionality

@@ -1,5 +1,4 @@
 ﻿using PersistentCollections;
-using PersistentCollections.Vectors;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -9,65 +8,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TmpTesting
+namespace Sample
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            var max = 5000000;
-            var t = Stopwatch.StartNew();
+            var empty = PersistentList<int>.Empty;
+            var plist = empty.Add(1); // [1]
             
-            Process.GetCurrentProcess().PriorityClass = System.Diagnostics.ProcessPriorityClass.RealTime;
-            for (int n = 0; n < 20; n++)
-            {
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
+            var a = plist.Add(2, 3, 4, 5);              // [1, 2, 3, 4, 5]
+            var b = empty.Add(new[] { 1, 2, 3, 4, 5 }); // [ 1, 2, 3, 4, 5 ]
 
-                var qq = PersistentVList<int>.Empty;
-                var d = ImmutableStack<int>.Empty;
-                var v0 = new PersistentVList<int>[max];
-                var v1 = new ImmutableStack<int>[max];
-                t.Restart();
-                for (int i = 0; i < max; i++)
-                {
-                    qq = qq.Add(i);
-                    v0[i] = qq;
-                    //if (i % 200 == 0) qq = qq.RemoveLast();
-                }
-                Console.WriteLine(t.Elapsed);
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
-                t.Restart();
-                for (int i = 0; i < max; i++)
-                {
-                    d = d.Push(i);
-                    v1[i] = d;
-                    //if (i % 200 == 0) qq = qq.RemoveLast();
-                }
-                Console.WriteLine(t.Elapsed);
-                Console.WriteLine("---");
-                GC.Collect();
-                GC.WaitForPendingFinalizers();
+            if (a == b) // true
+            {
+                Console.WriteLine("{0} == {1}, ", a, b);
             }
+
+            plist = plist.RemoveLast();
+
+            if (plist == empty) // true
+                Console.WriteLine("{0} == {1}, ", plist, empty);
+
+
+            var pdict = a.ToPersistentDictionary(x => x, x => x * 2);
+            pdict = pdict.Remove(1).Remove(2);
+
 
             Console.ReadLine();
-        }
-    }
-
-    static class Extensions
-    {
-        public static int[] RandomArray(this Random r, int max, int lenght)
-        {
-            var list = new List<int>(lenght);
-
-            for (int i = 0; i < lenght; i++)
-            {
-                list.Add(r.Next(max));
-            }
-
-            return list.ToArray();
         }
     }
 }

@@ -13,15 +13,12 @@ namespace Benchmarking
     {
         static void Main(string[] args)
         {
-            var r = new Random(544714);
             Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
-            //Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(1);
+            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(1);
 
-            var benchmark = new Benchmark(30, 300);
-
-
-            var structureSizes = new[] { 1000, 10000, 100000, 1000000 };
             // Memory test
+            var structureSizes = new[] { 1000, 10000, 100000, 1000000 };
+
             BenchmarkQueue.MemoryTest(structureSizes);
             BenchmarkStack.MemoryTest(structureSizes);
             BenchmarkHashSet.MemoryTest(structureSizes);
@@ -29,13 +26,15 @@ namespace Benchmarking
             BenchmarkDictionary.MemoryTest(structureSizes);
 
             // Speed test
+            var benchmark = new Benchmark(30, 300);
+
             BenchmarkHashSet.Perform(benchmark);
             BenchmarkStack.Perform(benchmark);
             BenchmarkQueue.Perform(benchmark);
             BenchmarkList.Perform(benchmark);
             BenchmarkDictionary.Perform(benchmark);
 
-
+            Console.WriteLine("end testing");
             Console.ReadLine();
         }
     }

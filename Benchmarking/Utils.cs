@@ -32,7 +32,7 @@ namespace Benchmarking
             var memBefore = GC.GetTotalMemory(true);
             var collection = getCollection();
             var memAfter = GC.GetTotalMemory(true);
-            Console.WriteLine("{0}: {1}", structure, memAfter - memBefore);
+            Console.WriteLine("{0}: {1} B", structure, memAfter - memBefore);
 
             // In order to prevent JIT to do optimizations
             if (collection.GetHashCode() != 0)

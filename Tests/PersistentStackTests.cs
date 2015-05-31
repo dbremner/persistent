@@ -33,7 +33,7 @@ namespace Tests
             Assert.AreEqual(v7.Count(), 0);
 
             Assert.AreEqual(v0, PersistentStack<int>.Empty);
-            MyAssert.ArrayEquals(v1.ToArray(), new[] { 0 });
+            MyAssert.ArrayEquals(v1.ToArray(), new[] { 0 }.Reverse());
             MyAssert.ArrayEquals(v2.ToArray(), new[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Reverse());
             MyAssert.ArrayEquals(v3.ToArray(), new[] { 0, 8, 9 }.Reverse());
             MyAssert.ArrayEquals(v4.ToArray(), new[] { 0, 1, 2, 3, 4, 5 }.Reverse());

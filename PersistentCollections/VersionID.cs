@@ -6,9 +6,4 @@ using System.Text;
 namespace PersistentCollections
 {
     internal class VersionID { }
-
-    internal class VListID
-    {
-        public bool TransientData { get; set; }
-    }
 }

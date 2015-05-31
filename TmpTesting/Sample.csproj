@@ -4,17 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{32D414AB-4BCA-44E0-9B30-DD335E5AB617}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{40B9D626-23E1-4842-8BE0-FBBDFA2F200C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PersistentCollections</RootNamespace>
-    <AssemblyName>PersistentCollection</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>TmpTesting</RootNamespace>
+    <AssemblyName>TmpTesting</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile>
-    </TargetFrameworkProfile>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,46 +25,41 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable">
+      <HintPath>..\packages\Microsoft.Bcl.Immutable.1.0.34\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CollectionExtensions.cs" />
-    <Compile Include="PersistentDictionary\IMapNode.cs" />
-    <Compile Include="PersistentQueue\PersistentQueue.cs" />
-    <Compile Include="PersistentStack\PersistentStack.cs" />
-    <Compile Include="PersistentVList\APersistentVList.cs" />
-    <Compile Include="PersistentVList\Block.cs" />
-    <Compile Include="PersistentVList\PersistentVList.cs" />
-    <Compile Include="PersistentDictionary\MapNode.cs" />
-    <Compile Include="PersistentDictionary\TransientDictionary.cs" />
-    <Compile Include="PersistentHashSet\PersistentHashSet.cs" />
-    <Compile Include="PersistentHashSet\TransientHashSet.cs" />
-    <Compile Include="PersistentList\DataNode.cs" />
-    <Compile Include="PersistentList\ReferencesNode.cs" />
-    <Compile Include="PersistentList\TailNode.cs" />
-    <Compile Include="PersistentVList\TransientVList.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Extensions.cs" />
-    <Compile Include="PersistentDictionary\APersistentDictionary.cs" />
-    <Compile Include="PersistentList\APersistentList.cs" />
-    <Compile Include="PersistentDictionary\CollisionArray.cs" />
-    <Compile Include="PersistentDictionary\PersistentDictionary.cs" />
-    <Compile Include="PersistentList\PersistentVector.cs" />
-    <Compile Include="VersionID.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PersistentCollections\PersistentCollections.csproj">
+      <Project>{32d414ab-4bca-44e0-9b30-dd335e5ab617}</Project>
+      <Name>PersistentCollections</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

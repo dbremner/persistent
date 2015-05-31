@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PersistentCollections.PersistentVList
 {
-    public class APersistentVList<T> : IEnumerable<T>
+    public abstract class APersistentVList<T> : IEnumerable<T>
     {
         internal Block<T> block;
         protected int offset;

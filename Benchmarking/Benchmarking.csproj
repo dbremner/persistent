@@ -56,7 +56,6 @@
     <Compile Include="BenchmarkDictionary.cs" />
     <Compile Include="BenchmarkList.cs" />
     <Compile Include="Extensions.cs" />
-    <Compile Include="MemoryTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils.cs" />
@@ -66,7 +65,7 @@
     <None Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PersistentCollection\PersistentCollections.csproj">
+    <ProjectReference Include="..\PersistentCollections\PersistentCollections.csproj">
       <Project>{32d414ab-4bca-44e0-9b30-dd335e5ab617}</Project>
       <Name>PersistentCollections</Name>
     </ProjectReference>

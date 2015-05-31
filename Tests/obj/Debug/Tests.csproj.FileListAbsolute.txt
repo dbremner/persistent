@@ -5,3 +5,10 @@ D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\bin\Debug\Persisten
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\bin\Debug\PersistentCollection.pdb
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\obj\Debug\Tests.dll
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Tests\obj\Debug\Tests.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\bin\Debug\Tests.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\bin\Debug\Tests.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\bin\Debug\PersistentCollections.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\bin\Debug\PersistentCollections.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\obj\Debug\Tests.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Tests\obj\Debug\Tests.pdb

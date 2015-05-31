@@ -8,3 +8,13 @@ D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Debug\Sy
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\obj\Debug\Benchmarking.csprojResolveAssemblyReference.cache
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\obj\Debug\Benchmarking.exe
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\obj\Debug\Benchmarking.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\Benchmarking.exe.config
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\obj\Debug\Benchmarking.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\obj\Debug\Benchmarking.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\Benchmarking.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\Benchmarking.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\PersistentCollections.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\System.Collections.Immutable.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\PersistentCollections.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Debug\System.Collections.Immutable.xml
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\obj\Debug\Benchmarking.csprojResolveAssemblyReference.cache

@@ -8,3 +8,13 @@ D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Release\
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Release\System.Collections.Immutable.xml
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Release\PersistentCollection.dll
 D:\BAKALARKA\PersistentCollection\PersistentCollection\Benchmarking\bin\Release\PersistentCollection.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\Benchmarking.exe.config
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\obj\Release\Benchmarking.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\obj\Release\Benchmarking.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\Benchmarking.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\Benchmarking.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\PersistentCollections.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\System.Collections.Immutable.dll
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\PersistentCollections.pdb
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\bin\Release\System.Collections.Immutable.xml
+D:\BAKALARKA\PersistentCollection\PersistentCollections\Benchmarking\obj\Release\Benchmarking.csprojResolveAssemblyReference.cache

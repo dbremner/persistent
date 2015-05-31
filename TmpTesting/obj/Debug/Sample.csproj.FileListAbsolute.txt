@@ -1,0 +1,3 @@
+D:\BAKALARKA\PersistentCollection\PersistentCollections\TmpTesting\bin\Debug\TmpTesting.exe.config
+D:\BAKALARKA\PersistentCollection\PersistentCollections\TmpTesting\obj\Debug\TmpTesting.exe
+D:\BAKALARKA\PersistentCollection\PersistentCollections\TmpTesting\obj\Debug\TmpTesting.pdb

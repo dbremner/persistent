@@ -4,7 +4,7 @@ VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersistentCollections", "PersistentCollections\PersistentCollections.csproj", "{32D414AB-4BCA-44E0-9B30-DD335E5AB617}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "TmpTesting\Sample.csproj", "{40B9D626-23E1-4842-8BE0-FBBDFA2F200C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{40B9D626-23E1-4842-8BE0-FBBDFA2F200C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{59E92CAE-4094-4D3F-A398-3995C88503EA}"
 EndProject

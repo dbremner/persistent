@@ -20,10 +20,6 @@ namespace Benchmarking
             SetAtTest(benchmark);
             RemoveTest(benchmark);
             GetAtTest(benchmark);
-
-            AddTransientTest(benchmark);
-            SetAtTransientTest(benchmark);
-            RemoveTransientTest(benchmark);
         }
 
         public static void MemoryTest(int[] sizes)

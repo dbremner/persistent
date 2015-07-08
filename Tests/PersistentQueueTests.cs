@@ -41,6 +41,14 @@ namespace Tests
             MyAssert.ArrayEquals(v6.ToArray(), new[] { 3, 4, 5, 6, 7 });
             Assert.AreEqual(v7, PersistentQueue<int>.Empty);
 
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
+
         }
 
         [TestMethod]
@@ -65,6 +73,14 @@ namespace Tests
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
             Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
             Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
         }
 
         [TestMethod]
@@ -117,7 +133,8 @@ namespace Tests
                 {
                     var arr = pArrays[i];
                     var v = versions[i];
-
+                    MyAssert.CloneEquals(v);
+                    
                     MyAssert.ArrayEquals(arr.ToArray(), v.ToArray());
                 }
             });

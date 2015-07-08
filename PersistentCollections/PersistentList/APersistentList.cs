@@ -1,11 +1,12 @@
-﻿using PersistentCollections.Interfaces;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace PersistentCollections.PersistentList
 {
+    [Serializable]
     public abstract class APersistentList<T> : IEnumerable<T>
     {
         internal IListNode<T> root;
@@ -250,7 +251,7 @@ namespace PersistentCollections.PersistentList
             else return Enumerable.Empty<T>();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }

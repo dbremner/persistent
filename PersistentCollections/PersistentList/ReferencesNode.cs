@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace PersistentCollections.PersistentList
 {
+    [Serializable]
     internal class ReferencesNode<T> : IListNode<T>, IEnumerable<IListNode<T>>, IEquatable<ReferencesNode<T>>
     {
         /// <summary>
@@ -83,7 +83,7 @@ namespace PersistentCollections.PersistentList
             foreach (var node in references) yield return node;
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
@@ -119,7 +119,7 @@ namespace PersistentCollections.PersistentList
 
             for (int i = 0; i < Count; i++)
             {
-                if (!object.ReferenceEquals(other[i], this[i]) && !other[i].Equals(this[i])) return false;
+                if (!ReferenceEquals(other[i], this[i]) && !other[i].Equals(this[i])) return false;
             }
 
             return true;

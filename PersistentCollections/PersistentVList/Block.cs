@@ -6,6 +6,7 @@ using System.Text;
 
 namespace PersistentCollections.PersistentVList
 {
+    [Serializable]
     internal sealed class Block<T>
     {
         private const int MaxSize = 1 << 13;

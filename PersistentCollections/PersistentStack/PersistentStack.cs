@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PersistentCollections
 {
+    [Serializable]
     public class PersistentStack<T> : IEnumerable<T>, IEquatable<PersistentStack<T>>
     {
         private readonly T item;
@@ -72,24 +73,20 @@ namespace PersistentCollections
             var a = this;
             var b = other;
 
-            while (object.ReferenceEquals(a, b) || a.item.Equals(b.item))
+            while (true)
             {
+                if (ReferenceEquals(a, b)) return true;
+                if (a.next == null ^  b.next == null) return false; //one is empty, not the other
+                if (a.next == null && b.next == null) return a.item.Equals(b.item);
                 a = a.next;
                 b = b.next;
-
-                if (object.ReferenceEquals(a, empty) && object.ReferenceEquals(empty, b))
-                {
-                    return true;
-                }
             }
-
-            return false;
         }
 
         public override bool Equals(object obj)
         {
             var pstack = obj as PersistentStack<T>;
-            if (obj == null) return false;
+            if (pstack == null) return false;
 
             return Equals(pstack);
         }

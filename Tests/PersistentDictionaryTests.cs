@@ -12,6 +12,7 @@ namespace PersistentCollections.Tests
     public class PersistentDictionaryTests
     {
         #region Auxiliary classes
+        [Serializable]
         internal class ManyCollisions : IEquatable<ManyCollisions>, IComparable<ManyCollisions>
         {
             internal int Key { get; private set; }
@@ -53,6 +54,7 @@ namespace PersistentCollections.Tests
             }
         }
 
+        [Serializable]
         internal class LongPrefixHash
         {
             internal int Key { get; private set; }
@@ -154,6 +156,7 @@ namespace PersistentCollections.Tests
 
                         var idx = activeTransients.First(x => x.Item2 == i - minVersions).Item1;
                         var p = transients[idx].AsPersistent();
+                        MyAssert.CloneEquals(p);
 
                         versions.Add(p);
                         pArrays.Add(p.ToDictionary(x => x.Key, x => x.Value));
@@ -210,7 +213,7 @@ namespace PersistentCollections.Tests
                     var tr = transients[i];
 
                     Assert.AreEqual(tr.Count, arr.Count);
-                    MyAssert.DictEquals(arr, tr);
+                    MyAssert.DictEquals(arr, tr, false);
 
                     foreach (var item in arr.Take(Math.Max(arr.Count >> 8, 10)))
                     {
@@ -227,6 +230,7 @@ namespace PersistentCollections.Tests
                 {
                     var arr = pArrays[i];
                     var v = versions[i];
+                    MyAssert.CloneEquals(v);
 
                     Assert.AreEqual(v.Count, arr.Count);
                     MyAssert.DictEquals(arr, v);
@@ -303,6 +307,8 @@ namespace PersistentCollections.Tests
 
                 changed = changed.Add(Key(index), index);
                 Assert.IsTrue(pd.Equals(changed));
+
+                MyAssert.CloneEquals(pd);
             }
         }
 
@@ -320,6 +326,7 @@ namespace PersistentCollections.Tests
                 }
                 Assert.AreEqual(pd.Count, num);
                 Assert.AreEqual(pd.ToList().Count, num);
+                MyAssert.CloneEquals(pd);
 
                 foreach (var item in pd)
                 {
@@ -413,6 +420,7 @@ namespace PersistentCollections.Tests
 
             Assert.AreEqual(pd.Count, smaller + bigger);
             Assert.AreEqual(tr.Count, num + bigger);
+            MyAssert.CloneEquals(pd);
 
             foreach (var item in tr)
             {
@@ -497,6 +505,11 @@ namespace PersistentCollections.Tests
 
                 MyAssert.DictEquals(v3, d2);
                 MyAssert.DictEquals(v4, d3);
+
+                MyAssert.CloneEquals(v1);
+                MyAssert.CloneEquals(v2);
+                MyAssert.CloneEquals(v3);
+                MyAssert.CloneEquals(v4);
             });
         }
 
@@ -510,13 +523,13 @@ namespace PersistentCollections.Tests
             tr.Add(new[] { 5, 6, 7, 8, 9 }, k => k, v => v);
 
             Assert.AreEqual(tr.Count, 10);
-            MyAssert.DictEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }.ToDictionary(x => x, x => x));
+            MyAssert.DictEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }.ToDictionary(x => x, x => x), false);
 
             var dict = new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }.ToDictionary(x => x, x => x);
 
             tr.Remove(9);
             Assert.AreEqual(tr.Count, 9);
-            MyAssert.DictEquals(tr, dict);
+            MyAssert.DictEquals(tr, dict, false);
 
             tr[5] = -1;
             tr[8] = -1;
@@ -524,7 +537,7 @@ namespace PersistentCollections.Tests
             dict[8] = -1;
 
             Assert.AreEqual(tr.Count, 9);
-            MyAssert.DictEquals(tr, dict);
+            MyAssert.DictEquals(tr, dict, false);
 
             Assert.AreEqual(tr[5], -1);
             MyAssert.Throws<KeyNotFoundException>(() => tr.Remove(20));
@@ -532,7 +545,7 @@ namespace PersistentCollections.Tests
             tr[9] = 9;
             dict[9] = 9;
             Assert.AreEqual(tr.Count, 10);
-            MyAssert.DictEquals(tr, dict);
+            MyAssert.DictEquals(tr, dict, false);
 
             for (int i = 0; i < 10; i++) tr.Remove(i);
             Assert.AreEqual(tr.Count, 0);
@@ -574,6 +587,17 @@ namespace PersistentCollections.Tests
             Assert.AreEqual(v8.Count, 8);
             Assert.AreEqual(v9.Count, 9);
             Assert.AreEqual(v10.Count, 0);
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
+            MyAssert.CloneEquals(v8);
+            MyAssert.CloneEquals(v9);
+            MyAssert.CloneEquals(v10);
             
             Assert.AreEqual(v0, PersistentDictionary<int, int>.Empty);
             MyAssert.DictEquals(v1, new[] { 0 }.ToDictionary(k => k, v => v));
@@ -611,6 +635,11 @@ namespace PersistentCollections.Tests
 
             var v4 = v2.Add(10240, 10240);
             rm = v2.Remove(96);
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
         }
 
         [TestMethod]
@@ -635,6 +664,14 @@ namespace PersistentCollections.Tests
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
             Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
             Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
         }
 
         [TestMethod]
@@ -687,6 +724,11 @@ namespace PersistentCollections.Tests
                 Assert.IsTrue(v1 != v6);
                 Assert.AreNotEqual(v5.GetHashCode(), v1.GetHashCode());
                 Assert.AreNotEqual(v1.GetHashCode(), v6.GetHashCode());
+
+                MyAssert.CloneEquals(v1);
+                MyAssert.CloneEquals(v2);
+                MyAssert.CloneEquals(v5);
+                MyAssert.CloneEquals(v6);
             });
         }
     }

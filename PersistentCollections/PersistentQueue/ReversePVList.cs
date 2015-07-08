@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PersistentCollections.PersistentQueue
 {
+    [Serializable]
     internal class ReversePVList<T> : IEnumerable<T>
     {
         private RBlock<T> block;

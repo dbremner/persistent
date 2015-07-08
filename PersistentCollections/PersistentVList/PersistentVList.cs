@@ -7,6 +7,7 @@ using System.Text;
 
 namespace PersistentCollections
 {
+    [Serializable]
     public sealed class PersistentVList<T> : APersistentVList<T>, IEnumerable<T>, IEquatable<PersistentVList<T>>
     {
         private int hash;
@@ -103,6 +104,7 @@ namespace PersistentCollections
         public bool Equals(PersistentVList<T> other)
         {
             if (Count != other.Count) return false;
+            if (Count == 0) return true;
             if (block == null) return false;
 
             return block.IsEqual(offset, other.block, other.offset);

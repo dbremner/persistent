@@ -1,11 +1,12 @@
-﻿using PersistentCollections.Interfaces;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using PersistentCollections.Interfaces;
 
 namespace PersistentCollections.PersistentDictionary
 {
+    [Serializable]
     internal class MapNode<K, V> : IMapNode<K, V>, IEnumerable<KeyValuePair<K, V>>, IEquatable<MapNode<K, V>>
     {
         private KeyValuePair<K, V>[] values;
@@ -700,7 +701,7 @@ namespace PersistentCollections.PersistentDictionary
             return res.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
@@ -742,7 +743,7 @@ namespace PersistentCollections.PersistentDictionary
             // Compare values
             if ((values != null) == (other.values != null))
             {
-                if (values != null && !object.ReferenceEquals(values, other.values))
+                if (values != null && !ReferenceEquals(values, other.values))
                 {
                     if (values.Length != other.values.Length) return false;
                     for (int i = 0; i < values.Length; i++)
@@ -754,14 +755,14 @@ namespace PersistentCollections.PersistentDictionary
             // Compare collision collections
             if ((collisions != null) == (other.collisions != null))
             {
-                if (collisions != null && !object.ReferenceEquals(collisions, other.collisions))
+                if (collisions != null && !ReferenceEquals(collisions, other.collisions))
                 {
                     if (collisions.Length != other.collisions.Length) return false;
                     for (int i = 0; i < collisions.Length; i++)
                     {
                         var c1 = collisions[i];
                         var c2 = other.collisions[i];
-                        if (!object.ReferenceEquals(c1, c2) && !c1.ContentEqual(c2)) return false;
+                        if (!ReferenceEquals(c1, c2) && !c1.ContentEqual(c2)) return false;
                     }
                 }
             }
@@ -778,7 +779,7 @@ namespace PersistentCollections.PersistentDictionary
                         var r1 = references[i];
                         var r2 = other.references[i];
 
-                        if (!object.ReferenceEquals(r1, r2) && !r1.Equals(r2)) return false;
+                        if (!ReferenceEquals(r1, r2) && !r1.Equals(r2)) return false;
                     }
                 }
             }

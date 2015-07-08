@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PersistentCollections.PersistentQueue
 {
+    [Serializable]
     internal class RBlock<T>
     {
         private T[] data;

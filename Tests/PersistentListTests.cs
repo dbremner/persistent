@@ -10,6 +10,14 @@ namespace Tests
     [TestClass]
     public class PersistentListTests
     {
+
+        [TestMethod]
+        public void CanClone()
+        {
+            var v0 = PersistentList<int>.Empty;
+            MyAssert.CloneEquals(v0);
+        }
+
         [TestMethod]
         public void ComplexRandomizedTest()
         {
@@ -255,6 +263,11 @@ namespace Tests
 
                 MyAssert.ArrayEquals(v3.ToArray(), a2);
                 MyAssert.ArrayEquals(v4.ToArray(), a3);
+
+                MyAssert.CloneEquals(v1);
+                MyAssert.CloneEquals(v2);
+                MyAssert.CloneEquals(v3);
+                MyAssert.CloneEquals(v4);
             }
         }
 
@@ -315,6 +328,16 @@ namespace Tests
             Assert.AreEqual(v9[8], 8);
 
             MyAssert.Throws<IndexOutOfRangeException>(() => { var t = v4[6]; });
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
+            MyAssert.CloneEquals(v8);
+            MyAssert.CloneEquals(v9);
         }
         
         [TestMethod]
@@ -338,7 +361,6 @@ namespace Tests
 
             Assert.AreEqual(tr.Count, 9);
             MyAssert.ArrayEquals(tr.ToArray(), new[] { 0, 1, 2, 3, 4, -1, 6, 7, -1 });
-
             Assert.AreEqual(tr[5], -1);
             MyAssert.Throws<IndexOutOfRangeException>(() => { var t = tr[20]; });
 
@@ -424,6 +446,13 @@ namespace Tests
             MyAssert.ArrayEquals(v6.ToArray(), new[] { 1, 1, 2, 4 });
             MyAssert.ArrayEquals(v5.ToArray(), new[] { 0, 1, 2 });
             MyAssert.ArrayEquals(v4.ToArray(), new[] { 9, 5, 8, 30 });
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
         }
 
         [TestMethod]
@@ -448,6 +477,14 @@ namespace Tests
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
             Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
             Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
         }
         
         [TestMethod]
@@ -460,6 +497,8 @@ namespace Tests
 
                 var v0 = randomArray.ToPersistentList();
                 var v1 = randomArray.ToPersistentList();
+                MyAssert.CloneEquals(v0);
+                MyAssert.CloneEquals(v1);
 
                 Assert.AreEqual(v0, v1);
                 Assert.AreEqual(v0.GetHashCode(), v1.GetHashCode());
@@ -469,6 +508,8 @@ namespace Tests
                 var v8 = v0.SetAt(idx, -1);
                 Assert.AreEqual(v7, v8);
                 Assert.AreEqual(v7.GetHashCode(), v8.GetHashCode());
+                MyAssert.CloneEquals(v7);
+                MyAssert.CloneEquals(v8);
 
                 var idxs = r.RandomArray(v0.Count, v0.Count);
                 var vals = r.RandomArray(int.MaxValue, idxs.Length);
@@ -481,6 +522,10 @@ namespace Tests
                     v1 = v1.SetAt(idxs[i], vals[i]);
                     v2 = v2.SetAt(idxs[i], vals[i]);
                 }
+
+                MyAssert.CloneEquals(v0);
+                MyAssert.CloneEquals(v1);
+                MyAssert.CloneEquals(v2);
 
                 Assert.AreEqual(v0, v1);
                 Assert.AreEqual(v0, v2);
@@ -497,11 +542,15 @@ namespace Tests
                 Assert.IsTrue(v6 != v1);
                 Assert.AreNotEqual(v5.GetHashCode(), v1.GetHashCode());
                 Assert.AreNotEqual(v1.GetHashCode(), v6.GetHashCode());
+                MyAssert.CloneEquals(v5);
+                MyAssert.CloneEquals(v6);
 
                 v0 = v0.Add(Enumerable.Range(0, 1024));
                 v2 = v2.RemoveLast(r.Next(v0.Count >> 1));
                 Assert.AreNotEqual(v0.GetHashCode(), v1.GetHashCode());
                 Assert.AreNotEqual(v1.GetHashCode(), v2.GetHashCode());
+                MyAssert.CloneEquals(v0);
+                MyAssert.CloneEquals(v2);
             });
         }
 

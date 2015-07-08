@@ -7,6 +7,7 @@ using System.Text;
 
 namespace PersistentCollections
 {
+    [Serializable]
     public class PersistentDictionary<K, V> : APersistentDictionary<K, V>, IEnumerable<KeyValuePair<K, V>>, IEquatable<PersistentDictionary<K, V>>
     {
         #region Empty structure

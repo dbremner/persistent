@@ -1,12 +1,12 @@
-﻿using PersistentCollections.Interfaces;
-using System;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using PersistentCollections.Interfaces;
 
 namespace PersistentCollections.PersistentDictionary
 {
-
+    [Serializable]
     public abstract class APersistentDictionary<K, V> : IEnumerable<KeyValuePair<K, V>>
     {
         internal IMapNode<K, V> root;
@@ -227,7 +227,7 @@ namespace PersistentCollections.PersistentDictionary
             return root.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }

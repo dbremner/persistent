@@ -6,6 +6,7 @@ using System.Text;
 
 namespace PersistentCollections
 {
+    [Serializable]
     public class PersistentQueue<T> : IEnumerable<T>
     {
         private PersistentVList<T> stack;

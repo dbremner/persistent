@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PersistentCollections
 {
+    [Serializable]
     public class PersistentHashSet<T> : IEnumerable<T>, IEquatable<PersistentHashSet<T>>
     {
         #region Empty structure

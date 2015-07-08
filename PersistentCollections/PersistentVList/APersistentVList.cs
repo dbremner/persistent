@@ -5,6 +5,7 @@ using System.Text;
 
 namespace PersistentCollections.PersistentVList
 {
+    [Serializable]
     public abstract class APersistentVList<T> : IEnumerable<T>
     {
         internal Block<T> block;

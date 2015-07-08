@@ -19,11 +19,11 @@ namespace Tests
             tr.Add(5, 6, 7, 8, 9, 5, 6, 7);
 
             Assert.AreEqual(tr.Count, 10);
-            MyAssert.SetEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            MyAssert.SetEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 }, false);
 
             tr.Remove(5);
             Assert.AreEqual(tr.Count, 9);
-            MyAssert.SetEquals(tr, new[] { 0, 1, 2, 3, 4, 6, 7, 8, 9 });
+            MyAssert.SetEquals(tr, new[] { 0, 1, 2, 3, 4, 6, 7, 8, 9 },false);
 
             MyAssert.Throws<KeyNotFoundException>(() => tr.Remove(10));
             MyAssert.Throws<KeyNotFoundException>(() => tr.Remove(-1));
@@ -31,7 +31,7 @@ namespace Tests
             tr.Add(new[] { 2, 3, 4, 5 });
 
             Assert.AreEqual(tr.Count, 10);
-            MyAssert.SetEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
+            MyAssert.SetEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 },false);
 
             tr.Remove(new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 });
             Assert.AreEqual(tr.Count, 0);
@@ -97,6 +97,17 @@ namespace Tests
             Assert.IsTrue(v3 != v0);
             Assert.IsTrue(v6 != v5);
             Assert.IsTrue(v6 != v1);
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
+            MyAssert.CloneEquals(v8);
+            MyAssert.CloneEquals(v9);
+
         }
 
 
@@ -122,6 +133,15 @@ namespace Tests
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
             Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
             Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
+
         }
 
     }

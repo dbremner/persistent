@@ -26,7 +26,7 @@ namespace Benchmarking
             BenchmarkDictionary.MemoryTest(structureSizes);
 
             // Speed test
-            var benchmark = new Benchmark(30, 300);
+            var benchmark = new Benchmark(5, 50);
 
             BenchmarkHashSet.Perform(benchmark);
             BenchmarkStack.Perform(benchmark);

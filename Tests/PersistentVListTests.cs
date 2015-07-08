@@ -103,7 +103,7 @@ namespace Tests
                         versions.Add(p);
                         pArrays.Add(p.ToList());
 
-                        MyAssert.ArrayEquals(transients[idx], tArrays[idx]);
+                        MyAssert.ArrayEquals(transients[idx], tArrays[idx], false);
 
                         activeTransients.RemoveWhere(x => x.Item2 == i - minVersions);
                     }
@@ -159,7 +159,7 @@ namespace Tests
                     var tr = transients[i];
 
                     Assert.AreEqual(tr.Count, arr.Count);
-                    MyAssert.ArrayEquals(arr, tr);
+                    MyAssert.ArrayEquals(arr, tr, false);
 
                     for (int s = 0; s < Math.Min(arr.Count, 10); s++)
                     {
@@ -177,6 +177,7 @@ namespace Tests
                 {
                     var arr = pArrays[i];
                     var v = versions[i];
+                    MyAssert.CloneEquals(v);
 
                     Assert.AreEqual(v.Count, arr.Count);
                     MyAssert.ArrayEquals(arr, v);
@@ -214,6 +215,15 @@ namespace Tests
             Assert.AreEqual(v7.Count, 2);
             Assert.AreEqual(v8.Count, 0);
 
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
+            MyAssert.CloneEquals(v8);
+
             Assert.AreEqual(v0, PersistentVList<int>.Empty);
             MyAssert.ArrayEquals(v1, new[] { 1, 2, 3, 4, 5 });
             MyAssert.ArrayEquals(v2, new[] { 2, 3, 4, 1 });
@@ -250,31 +260,31 @@ namespace Tests
 
             tr.RemoveLast();
             Assert.AreEqual(tr.Count, 9);
-            MyAssert.ArrayEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
+            MyAssert.ArrayEquals(tr, new[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 }, false);
 
             tr[5] = -1;
             tr[8] = -1;
 
             Assert.AreEqual(tr.Count, 9);
-            MyAssert.ArrayEquals(tr, new[] { 0, 1, 2, 3, 4, -1, 6, 7, -1 });
+            MyAssert.ArrayEquals(tr, new[] { 0, 1, 2, 3, 4, -1, 6, 7, -1 }, false);
 
             Assert.AreEqual(tr[5], -1);
             MyAssert.Throws<IndexOutOfRangeException>(() => { var t = tr[20]; });
 
             tr[9] = 9;
             Assert.AreEqual(tr.Count, 10);
-            MyAssert.ArrayEquals(tr, new[] { 0, 1, 2, 3, 4, -1, 6, 7, -1, 9 });
+            MyAssert.ArrayEquals(tr, new[] { 0, 1, 2, 3, 4, -1, 6, 7, -1, 9 }, false);
             
             tr.RemoveLast(5);
 
             Assert.AreEqual(tr.Count, 5);
-            MyAssert.ArrayEquals(tr.ToArray(), new[] { 0, 1, 2, 3, 4 });
+            MyAssert.ArrayEquals(tr.ToArray(), new[] { 0, 1, 2, 3, 4 }, false);
 
             tr.Add(new[] { 2, 3, 4 });
             Assert.AreEqual(tr[6], 3);
 
             Assert.AreEqual(tr.Count, 8);
-            MyAssert.ArrayEquals(tr.ToArray(), new[] { 0, 1, 2, 3, 4, 2, 3, 4 });
+            MyAssert.ArrayEquals(tr.ToArray(), new[] { 0, 1, 2, 3, 4, 2, 3, 4 }, false);
 
             tr.RemoveLast(8);
             Assert.AreEqual(tr.Count, 0);
@@ -308,12 +318,12 @@ namespace Tests
             Assert.AreEqual(v3.Count, 1);
 
             MyAssert.ArrayEquals(v1, new[] { 1, 5, 8 });
-            MyAssert.ArrayEquals(t1, new[] { 9, 5, 8, 30 });
-            MyAssert.ArrayEquals(t2, new[] { 1, 5, 8 });
+            MyAssert.ArrayEquals(t1, new[] { 9, 5, 8, 30 }, false);
+            MyAssert.ArrayEquals(t2, new[] { 1, 5, 8 }, false);
             MyAssert.ArrayEquals(v3, new[] { 1 });
 
             t2.Add(8, 9);
-            MyAssert.ArrayEquals(t2, new[] { 1, 5, 8, 8, 9 });
+            MyAssert.ArrayEquals(t2, new[] { 1, 5, 8, 8, 9 }, false);
 
             var v4 = t1.AsPersistent();
 
@@ -325,14 +335,14 @@ namespace Tests
             t2.RemoveLast();
             t2.Add(89);
 
-            MyAssert.ArrayEquals(t2, new[] { 1, 5, 3, 8, 89 });
+            MyAssert.ArrayEquals(t2, new[] { 1, 5, 3, 8, 89 }, false);
 
             t2[0] = 0;
             t2.RemoveLast(4);
             t2.Add(1, 2);
 
             MyAssert.ArrayEquals(v1, new[] { 1, 5, 8 });
-            MyAssert.ArrayEquals(t2, new[] { 0, 1, 2 });
+            MyAssert.ArrayEquals(t2, new[] { 0, 1, 2 }, false);
 
             var v5 = t2.AsPersistent();
 
@@ -344,6 +354,14 @@ namespace Tests
             MyAssert.ArrayEquals(v6, new[] { 0, 1, 2, 4 });
             MyAssert.ArrayEquals(v5, new[] { 0, 1, 2 });
             MyAssert.ArrayEquals(v4, new[] { 9, 5, 8, 30 });
+
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
         }
 
 
@@ -369,6 +387,15 @@ namespace Tests
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
             Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
             Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
         }
 
         [TestMethod]
@@ -421,6 +448,14 @@ namespace Tests
                 v2 = v2.RemoveLast(r.Next(v0.Count >> 1));
                 Assert.AreNotEqual(v0.GetHashCode(), v1.GetHashCode());
                 Assert.AreNotEqual(v1.GetHashCode(), v2.GetHashCode());
+
+
+                MyAssert.CloneEquals(v1);
+                MyAssert.CloneEquals(v2);
+                MyAssert.CloneEquals(v5);
+                MyAssert.CloneEquals(v6);
+                MyAssert.CloneEquals(v7);
+                MyAssert.CloneEquals(v8);
             });
         }
     }

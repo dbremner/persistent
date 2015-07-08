@@ -9,6 +9,7 @@ namespace PersistentCollections
     /// <summary>
     ///     Simple implementation of collision collection using persistent array
     /// </summary>
+    [Serializable]
     internal class CollisionArray<K, V> : ICollisionCollection<K, V>, IEnumerable<KeyValuePair<K, V>>
     {
         private readonly int hashCode;

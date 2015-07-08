@@ -1,13 +1,11 @@
-﻿using PersistentCollections.Interfaces;
-using PersistentCollections.PersistentList;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-
+using PersistentCollections.PersistentList;
 
 namespace PersistentCollections
 {
+    [Serializable]
     public class PersistentList<T> : APersistentList<T>, IEquatable<PersistentList<T>>
     {
         private int hash;
@@ -169,7 +167,7 @@ namespace PersistentCollections
 
         private bool IsEqual(IListNode<T> node1, IListNode<T> node2)
         {
-            return object.ReferenceEquals(node1, node2) || node1.Equals(node2);
+            return ReferenceEquals(node1, node2) || node1.Equals(node2);
         }
 
         public bool Equals(PersistentList<T> other)

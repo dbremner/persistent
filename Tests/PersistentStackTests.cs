@@ -33,13 +33,21 @@ namespace Tests
             Assert.AreEqual(v7.Count(), 0);
 
             Assert.AreEqual(v0, PersistentStack<int>.Empty);
-            MyAssert.ArrayEquals(v1.ToArray(), new[] { 0 }.Reverse());
-            MyAssert.ArrayEquals(v2.ToArray(), new[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Reverse());
-            MyAssert.ArrayEquals(v3.ToArray(), new[] { 0, 8, 9 }.Reverse());
-            MyAssert.ArrayEquals(v4.ToArray(), new[] { 0, 1, 2, 3, 4, 5 }.Reverse());
-            MyAssert.ArrayEquals(v5.ToArray(), new[] { 0, 1, 2, 3, 4, 5, 0 }.Reverse());
-            MyAssert.ArrayEquals(v6.ToArray(), new[] { 0, 1, 2, 3, 4 }.Reverse());
+            MyAssert.ArrayEquals(v1.ToArray(), new[] { 0 });
+            MyAssert.ArrayEquals(v2.ToArray(), new[] { 0, 1, 2, 3, 4, 5, 6, 7 }.Reverse().ToArray());
+            MyAssert.ArrayEquals(v3.ToArray(), new[] { 0, 8, 9 }.Reverse().ToArray());
+            MyAssert.ArrayEquals(v4.ToArray(), new[] { 0, 1, 2, 3, 4, 5 }.Reverse().ToArray());
+            MyAssert.ArrayEquals(v5.ToArray(), new[] { 0, 1, 2, 3, 4, 5, 0 }.Reverse().ToArray());
+            MyAssert.ArrayEquals(v6.ToArray(), new[] { 0, 1, 2, 3, 4 }.Reverse().ToArray());
             Assert.AreEqual(v7, PersistentStack<int>.Empty);
+
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
 
         }
 
@@ -56,6 +64,9 @@ namespace Tests
             var v6 = v4.Pop().Pop();
             var v7 = v5.Pop().Pop();
 
+            Assert.AreEqual(v0,v0);
+            Assert.AreEqual(v1, v1);
+            Assert.AreEqual(v3,v3);
             Assert.AreNotEqual(v1, v2);
             Assert.IsTrue(v1 != v2);
             Assert.AreEqual(v1, v3);
@@ -65,6 +76,15 @@ namespace Tests
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());
             Assert.AreEqual(v4.GetHashCode(), v5.GetHashCode());
             Assert.AreEqual(v6.GetHashCode(), v7.GetHashCode());
+
+            MyAssert.CloneEquals(v0);
+            MyAssert.CloneEquals(v1);
+            MyAssert.CloneEquals(v2);
+            MyAssert.CloneEquals(v3);
+            MyAssert.CloneEquals(v4);
+            MyAssert.CloneEquals(v5);
+            MyAssert.CloneEquals(v6);
+            MyAssert.CloneEquals(v7);
         }
 
         [TestMethod]
@@ -117,6 +137,7 @@ namespace Tests
                 {
                     var arr = pArrays[i];
                     var v = versions[i];
+                    MyAssert.CloneEquals(v);
 
                     MyAssert.ArrayEquals(arr.ToArray(), v.ToArray());
                 }

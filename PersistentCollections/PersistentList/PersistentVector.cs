@@ -8,6 +8,7 @@ namespace PersistentCollections
     [Serializable]
     public class PersistentList<T> : APersistentList<T>, IEquatable<PersistentList<T>>
     {
+        [NonSerialized]
         private int hash;
         protected static readonly PersistentList<T> empty = new PersistentList<T>(null, 0, 0, null);
         public static PersistentList<T> Empty

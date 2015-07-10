@@ -14,6 +14,7 @@ namespace PersistentCollections
     {
         private readonly int hashCode;
         private KeyValuePair<K, V>[] collisions;
+        [NonSerialized]
         private VersionID versionID;
 
         public int HashCode

@@ -7,6 +7,7 @@ namespace PersistentCollections.PersistentList
     class TailNode<T>
     {
         private T[] data;
+        [NonSerialized]
         private VersionID versionID;
         private int lastModified;
 

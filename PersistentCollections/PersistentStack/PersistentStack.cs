@@ -76,7 +76,9 @@ namespace PersistentCollections
             while (true)
             {
                 if (ReferenceEquals(a, b)) return true;
-                if (a.next == null ^  b.next == null) return false; //one is empty, not the other
+                if (!a.item.Equals(b.item)) return false;
+
+                if (a.next == null ^ b.next == null) return false; //one is empty, not the other
                 if (a.next == null && b.next == null) return a.item.Equals(b.item);
                 a = a.next;
                 b = b.next;

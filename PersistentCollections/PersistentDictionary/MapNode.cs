@@ -12,9 +12,13 @@ namespace PersistentCollections.PersistentDictionary
         private KeyValuePair<K, V>[] values;
         private ICollisionCollection<K, V>[] collisions;
         private IMapNode<K, V>[] references;
+
+        [NonSerialized]
         private int hash;
 
         private UInt32 vBitmap, rBitmap, cBitmap;
+
+        [NonSerialized]
         private VersionID versionID;
 
       

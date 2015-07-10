@@ -17,6 +17,8 @@ namespace PersistentCollections.PersistentVList
         private Block<T> next;
         private int offset;
         private int restCount;
+
+        [NonSerialized]
         private VersionID versionID;
 
         public bool IsFull

@@ -9,7 +9,9 @@ namespace PersistentCollections.PersistentList
     internal class DataNode<T> : IListNode<T>, IEquatable<DataNode<T>>, IEnumerable<T>
     {
         internal T[] data;
+        [NonSerialized]
         private VersionID versionID;
+        [NonSerialized]
         private int hash;
 
         public T this[int i]

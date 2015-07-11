@@ -63,6 +63,7 @@ namespace Tests
             var v5 = v3.Pop();
             var v6 = v4.Pop().Pop();
             var v7 = v5.Pop().Pop();
+            var v8 = v2.Push(2);
 
             Assert.AreEqual(v0,v0);
             Assert.AreEqual(v1, v1);
@@ -71,6 +72,8 @@ namespace Tests
             Assert.IsTrue(v1 != v2);
             Assert.AreEqual(v1, v3);
             Assert.IsTrue(v1 == v3);
+            Assert.AreNotEqual(v1, v8);
+            Assert.IsTrue(v1 != v8);
             Assert.AreEqual(v4, v5);
             Assert.AreEqual(v6, v7);
             Assert.AreEqual(v1.GetHashCode(), v3.GetHashCode());

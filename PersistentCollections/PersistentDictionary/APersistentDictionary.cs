@@ -11,6 +11,8 @@ namespace PersistentCollections.PersistentDictionary
     {
         internal IMapNode<K, V> root;
         protected int count;
+
+        [NonSerialized]
         internal VersionID versionID;
 
         public bool IsEmpty { get { return count == 0; } }

@@ -93,7 +93,7 @@ namespace PersistentCollections.Tests
             var maxVersions = 100000;
             var v0 = PersistentDictionary<ManyCollisions, int>.Empty;
 
-            Parallel.For(0, 50, l =>
+            Parallel.For(0, 5, l =>
             //for (int l = 0; l < 50; l++)
             {
                 var r = new Random(l * 20);

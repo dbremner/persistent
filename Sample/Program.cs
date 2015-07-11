@@ -5,8 +5,10 @@ using System.Collections.Immutable;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Sample
 {
@@ -33,7 +35,6 @@ namespace Sample
 
             var pdict = a.ToPersistentDictionary(x => x, x => x * 2);
             pdict = pdict.Remove(1).Remove(2);
-
 
             Console.ReadLine();
         }

@@ -10,8 +10,10 @@ namespace PersistentCollections.PersistentList
         /// <summary>
         ///     Version ID of data structure in transient state, null otherwise
         /// </summary>
+        [NonSerialized]
         private readonly VersionID versionID;
         private IListNode<T>[] references;
+        [NonSerialized]
         private int hash;
 
         public int Count

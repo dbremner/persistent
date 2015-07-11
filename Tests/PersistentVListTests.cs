@@ -17,7 +17,7 @@ namespace Tests
             var maxVersions = 1000000;
             var v0 = PersistentVList<int>.Empty;
 
-            Parallel.For(0, 10, l =>
+            Parallel.For(0, 3, l =>
             //for (int l = 0; l < 1; l++)
             {
                 var r = new Random(l * 20);

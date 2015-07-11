@@ -11,6 +11,7 @@ namespace PersistentCollections
     {
         private PersistentVList<T> stack;
         private ReversePVList<T> reverseStack;
+        [NonSerialized]
         private int hash;
 
         private static readonly PersistentQueue<T> empty = new PersistentQueue<T>(PersistentVList<T>.Empty,  null);

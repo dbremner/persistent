@@ -10,6 +10,7 @@ namespace PersistentCollections
     [Serializable]
     public sealed class PersistentVList<T> : APersistentVList<T>, IEnumerable<T>, IEquatable<PersistentVList<T>>
     {
+        [NonSerialized]
         private int hash;
         private static readonly PersistentVList<T> empty = new PersistentVList<T>(null, 0);
         public static PersistentVList<T> Empty { get { return empty; } }

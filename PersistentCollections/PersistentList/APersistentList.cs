@@ -12,8 +12,9 @@ namespace PersistentCollections.PersistentList
         internal IListNode<T> root;
         protected int count;
         protected int treeDepth;
-
         internal TailNode<T> tailData;
+
+        [NonSerialized]
         internal VersionID versionID;
 
 
